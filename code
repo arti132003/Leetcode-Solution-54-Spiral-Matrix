@@ -1,0 +1,36 @@
+import java.util.*;
+
+class Solution {
+    public List<Integer> spiralOrder(int[][] a) {
+        int m = a.length;
+        
+        int n = a[0].length;
+        int r1 = 0, r2 = m - 1;
+        int c1 = 0, c2 = n - 1;
+        List<Integer> m1 = new ArrayList<>();
+        int c = 0;
+        while (c < m * n) {
+            for (int i = c1; i <= c2 && c < m * n; i++) {
+                m1.add(a[r1][i]);
+                c++;
+            }
+            for (int i = r1 + 1; i <= r2 && c < m * n; i++) {
+                m1.add(a[i][c2]);
+                c++;
+            }
+            for (int i = c2 - 1; i >= c1 && c < m * n; i--) {
+                m1.add(a[r2][i]);
+                c++;
+            }
+            for (int i = r2 - 1; i > r1 && c < m * n; i--) {
+                m1.add(a[i][c1]);
+                c++;
+            }
+            r1++;
+            r2--;
+            c1++;
+            c2--;
+        }
+        return m1;
+    }
+}
